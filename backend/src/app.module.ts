@@ -5,23 +5,25 @@ import { AppService } from './app.service';
 import { UserEntity } from './entities/user.entity';
 import { PaymentEntity } from './entities/payment.entity';
 import { BorrowerEntity } from './entities/borrower.entity';
+import { UsersModule } from './users/users.module';
 // import source from './config/db/ormconfig';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '172.24.0.2',
+      host: 'db',
       port: 3306,
       username: 'user',
       password: 'password',
       database: 'database',
-      entities: ['src/entities/*.entity.{js,ts}'],
+      entities: [UserEntity, PaymentEntity, BorrowerEntity],
+      migrations: ['src/migrations/*.js'],
       synchronize: false,
-      migrations: ['src/migrations/*.ts'],
       logging: true,
     }),
     TypeOrmModule.forFeature([UserEntity, PaymentEntity, BorrowerEntity]),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

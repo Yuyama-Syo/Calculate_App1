@@ -1,3 +1,9 @@
+// import { BorrowerEntity } from 'src/entities/borrower.entity';
+// import { PaymentEntity } from 'src/entities/payment.entity';
+// import { UserEntity } from 'src/entities/user.entity';
+import { BorrowerEntity } from '../../entities/borrower.entity';
+import { PaymentEntity } from '../../entities/payment.entity';
+import { UserEntity } from '../../entities/user.entity';
 import { DataSource } from 'typeorm';
 
 const source = new DataSource({
@@ -7,8 +13,8 @@ const source = new DataSource({
   username: 'user',
   password: 'password',
   database: 'database',
-  entities: ['src/entities/*.entity.ts'],
-  migrations: ['src/migrations/*.ts'],
+  entities: [UserEntity, PaymentEntity, BorrowerEntity],
+  migrations: ['dist/migrations/*.js'],
   synchronize: false,
   logging: true,
 });
