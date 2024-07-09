@@ -7,9 +7,8 @@ COPY package*.json ./
 RUN npm install && \
     npm install -g @nestjs/cli && \
     npm install --save @nestjs/typeorm typeorm mysql2 && \
-    npm install --save-dev ts-node
-
-RUN
+    npm install --save-dev ts-node && \
+    npm i --save class-validator class-transformer
 
 COPY . .
 
